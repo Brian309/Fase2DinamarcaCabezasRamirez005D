@@ -33,7 +33,7 @@ class Tipo_Noticia(models.Model):
 
     def __str__(self):
 
-        return self.id_tipo
+        return str(self.id_tipo)
 
 class Noticia(models.Model):
 
@@ -55,5 +55,5 @@ class Consola(models.Model):
 
     def __str__(self):
 
-        return self.id_consola
+        return str(self.id_consola)
 
