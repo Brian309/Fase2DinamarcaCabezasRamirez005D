@@ -1,5 +1,5 @@
 .games {
-    background-image: url("{% static '../img/games.jpg' %}");
+    background-image: url("../img/games.jpg'");
     margin-top: 55px;
 }
 
@@ -24,12 +24,10 @@
 }
 
 .contacto {
-    background-image: url("../img/contacto.jpg");
     margin-top: 55px;
 }
 
 .gracias {
-    background-image: url("../img/contacto.jpg");
     margin-top: 55px;
 }
 
