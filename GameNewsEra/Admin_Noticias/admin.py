@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Autor, Consola,Tipo_Noticia, Noticia
+from . models import Autor, Consola, Tipo_Noticia, Noticia
 # Register your models here.
 
 

@@ -17,7 +17,7 @@ class Autor(models.Model):
     )
 
     educacion =  models.CharField(max_length = 2, choices = NIVEL_EDUCACIONAL, default = 'NA')
-    numero = models.IntegerField(max_length = 9, blank = True, null = True)
+    numero = models.IntegerField(blank = True, null = True)
     correo = models.EmailField(max_length = 50, error_messages = {"Error": "Digite un formato válido!"})
 
     def __str__(self):
