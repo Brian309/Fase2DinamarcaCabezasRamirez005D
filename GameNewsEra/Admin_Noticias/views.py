@@ -15,7 +15,7 @@ def videogames(request):
     return render(request, 'videogames.html', context={},)
 
 def consolas(request):
-
+ 
     return render(request, 'consolas.html', context={},)
 
 def contacto(request):
@@ -29,3 +29,25 @@ def contacto(request):
 def gracias(request):
 
     return render(request, 'gracias.html', context={},)
+
+
+def game1(request):
+
+    return render(request,'pgs/game-1.html')
+
+
+def game2(request):
+
+    return render(request,'pgs/game-2.html')
+
+
+def game3(request):
+
+    return render(request,'pgs/game-3.html')
+
+
+def game4(request):
+
+    return render(request,'pgs/game-4.html')
+
+

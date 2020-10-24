@@ -55,7 +55,7 @@ ROOT_URLCONF = 'GameNewsEra.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates','./pgs'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

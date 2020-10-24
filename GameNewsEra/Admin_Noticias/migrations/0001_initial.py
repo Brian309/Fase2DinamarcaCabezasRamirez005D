@@ -32,21 +32,13 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Tipo_Noticia',
-            fields=[
-                ('id_tipo', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False)),
-                ('nom_tipo', models.CharField(max_length=50)),
-                ('descripcion', models.TextField(max_length=100)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Noticia',
             fields=[
                 ('id_noticia', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False)),
                 ('titulo', models.CharField(max_length=50)),
                 ('descripcion', models.TextField(max_length=100)),
                 ('autor', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='Admin_Noticias.autor')),
-                ('tipo_noticia', models.ManyToManyField(to='Admin_Noticias.Tipo_Noticia')),
+                ('tipo_de_noticia', models.CharField(max_length = 50, help_text="Debe indicar el tipo de noticia, por ejemplo novedad, popular etc.")),
             ],
         ),
     ]

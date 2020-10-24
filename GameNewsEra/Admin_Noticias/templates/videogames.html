@@ -4,6 +4,8 @@
  <!--Portada Principal-->
  <section class="games container-fluid slider d-flex">
     <h1 class="display-4 d-block w-100"></h1>
+    {% load static %}
+    <style>.tlou {background-image: url('{% static "/img/games.jpg" %}');}</style>
 </section>
 <!--Header-->
 <header id="home">
@@ -34,7 +36,7 @@
           <div class="info-rigth">
             <h1 class="titulos display-4">Cyberpunk 2077 está más cerca que nunca.</h1>
             <p>Ahora, habrá cuatro efectos de ray tracing en el juego, para ofrecer aún más la calidad de imagen, el realismo y la inmersión.</p>
-            <a href="pgs/game-1.html" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
+            <a href="{% url 'game-1' %}" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
             <br><br>
           </div>
         </div>
@@ -69,7 +71,7 @@
               comunidad gamer, estara disponible para la <b>Playstation 5</b>. Muchos fanaticos de este juego
               se preguntaban si estaria disponible para la <b>PS5</b>, ya que, estos se estrenarian 
               el mismo año. </p>
-            <a href="pgs/game-2.html" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
+            <a href="{% url 'game-2' %}" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
           </div>
         </div>
         <div class="col-md-3">
@@ -99,7 +101,7 @@
           <div class="info-rigth">
             <h1 class="titulos display-4">FARCRY 6 promete una increíble Experiencia.</h1>
             <p>Descubre por qué la última entrega de Far Cry podría ser la mejor hasta ahora.</p>
-            <a href="noticiaGame3.html" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
+            <a href="{% url 'game-3' %}" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
           </div>
         </div>
         <div class="col-md-3">
@@ -128,7 +130,7 @@
           <div class="info-rigth">
             <h1 class="titulos display-4">Call of Duty: Black Ops Cold War y su Nuevo Trailer.</h1>
             <p>El modo zombies nos deja con un primer teaser que adelanta una historia y una atmósfera mucho más oscura y cercana al terror...</p>
-            <a href="pgs/game-4.html" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
+            <a href="{% url 'game-4' %}" class="btn btn-outline-danger btn-lg mt-2">Quiero saber más...</a>
             <br><br>
           </div>
         </div>

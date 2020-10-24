@@ -24,23 +24,12 @@ class Autor(models.Model):
 
         return f'{self.id_autor}, {self.nom_autor}'
 
-
-class Tipo_Noticia(models.Model):
-
-    id_tipo = models.UUIDField(primary_key = True, default = uuid.uuid4)
-    nom_tipo = models.CharField(max_length = 50)
-    descripcion = models.TextField(max_length = 100)
-
-    def __str__(self):
-
-        return str(self.id_tipo)
-
 class Noticia(models.Model):
 
     id_noticia = models.UUIDField(primary_key = True, default = uuid.uuid4, help_text = 'Indique el ID de la Noticia')
     titulo = models.CharField(max_length = 50)
     descripcion = models.TextField(max_length = 100)
-    tipo_noticia = models.ManyToManyField(Tipo_Noticia)
+    tipo_de_noticia = models.CharField(max_length = 50, help_text="Debe indicar el tipo de noticia, por ejemplo novedad, popular etc.")
     autor = models.ForeignKey(Autor, on_delete = models.SET_NULL, null= True)
 
     def __str__(self):
@@ -57,3 +46,30 @@ class Consola(models.Model):
 
         return str(self.id_consola)
 
+class Formulario(models.Model):
+
+    AREAS_POSTULACION = (
+        ('NV', 'Noticias Videojuegos'),
+        ('NC', 'Noticias Consolas'),
+        ('PG', 'Publicidad Gaming')
+    )
+
+    NIVEL_EDUCACIONAL = (
+        ('UV', 'Universidad'),
+        ('TC', 'Tecnico Profesional'),
+        ('SC', 'Secundaria Completa'),
+        ('NA', 'Ninguno'),
+    )
+
+    id_postulacion = models.UUIDField(primary_key = True, default = uuid.uuid4)
+    area_postular = models.CharField(max_length = 2, choices = AREAS_POSTULACION, default = 'NV')
+    nombre = models.TextField(max_length = 50)
+    apellido = models.TextField(max_length = 50)
+    correo = models.EmailField(max_length = 50, error_messages = {"Error": "Digite un formato válido!"})
+    numero = models.IntegerField(blank = True, null = True)
+    nivel_estudios = models.CharField(max_length = 2, choices = NIVEL_EDUCACIONAL, default = 'NA')
+    motivo = models.TextField(max_length = 500)
+
+    def __str__(self):
+
+        return str(self)
