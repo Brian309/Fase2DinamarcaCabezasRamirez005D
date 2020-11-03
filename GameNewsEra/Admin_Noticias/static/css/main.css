@@ -83,6 +83,11 @@ nav.navbar {
     margin-top: 55px;
 }
 
+.bloque {
+    overflow: scroll;
+    resize: none;
+}
+
 .img-centrar {
     width: 50%;
     display: block;
@@ -95,5 +100,4 @@ nav.navbar {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
+  }

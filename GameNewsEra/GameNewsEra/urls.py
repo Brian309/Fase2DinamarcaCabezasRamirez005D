@@ -23,4 +23,4 @@ urlpatterns = [
     path('access/', include('Admin_Noticias.urls'))
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
+#urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)

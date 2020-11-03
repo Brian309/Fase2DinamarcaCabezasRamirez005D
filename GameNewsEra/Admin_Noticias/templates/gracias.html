@@ -1,9 +1,9 @@
 {% extends "base_generic.html" %}
-
-  {% block content %}
-
+{% block content %}
     <!--Portada Principal-->
     <section class="gracias container-fluid slider d-flex">
+      {% load static %}
+      <style>.gracias {background-image: url('{% static "img/contacto.jpg" %}');}</style>
       <h1 class="display-4 d-block w-100"></h1>
     </section>
     <!--Header-->
@@ -37,6 +37,5 @@
           </div>
         </div>
       </div>
-    </section>
-    
+    </section>    
 {% endblock %}
