@@ -6,7 +6,6 @@ urlpatterns = [
     path('home/', views.index, name='index'),
     path('videogames/', views.videogames, name='videogames'),
     path('consolas/', views.consolas, name='consolas'),
-    path('contacto/', views.contacto, name='contacto'),
     path('gracias/', views.gracias, name='gracias'),
     #Path paginas de noticias
     path('videogames/game-1', views.game1, name='game-1'),
@@ -34,4 +33,7 @@ urlpatterns += [
     path('consola/<str:pk>/update/',views.ConsolaUpdate.as_view(), name = 'consola_update'),
     path('consola/<str:pk>/delete/',views.ConsolaDelete.as_view(), name = 'consola_delete'),
     path('lista_consolas/', views.ConsolaListView.as_view(), name='consola_list'),
+    #Crud Formulario
+    path('admin_noticias/Formulario/create/', views.formulario_nuevo,name='contacto_create'),
+    path('admin_noticias/gracias/<str:pk>', views.FormDetailView.as_view(), name='gracias_detail'),
 ]

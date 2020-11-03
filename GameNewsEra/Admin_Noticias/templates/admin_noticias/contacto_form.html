@@ -21,11 +21,17 @@
           </div>
         </div>
       </div>
-      <div class="container mt-5">
-        <div class="row">
+      <div class="container">
+        <div class="row text-center">
           <div class="col-md-12">
+            <h2 id="new" class="display-4" style="margin-bottom: 5%;">Actualmente Contamos con: </h2>
+          </div>
+        </div>
+      </div>
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6 mb-5">
             <div>
-              <h2 id="new" class="display-4" style="margin-bottom: 5%;">Actualmente Contamos con: </h2>
               <ul>
                 <li class="h4"><strong>Autores:</strong> {{ nro_autores }}</li>
                 <li class="h4"><strong>Noticias:</strong> {{ nro_noticias }}</li>
@@ -40,7 +46,7 @@
     <!--Formulario-->
     <section id="bloque-1">
       <div class="container">
-        <div class="row mt-5">
+        <div class="row justify-content-center">
           <div class="col-md-3">
             <div>
               {% load static %}
@@ -48,51 +54,18 @@
             </div>
           </div>
           <div class="col-md-6">
-            <form id="formulario" action="{% url 'gracias' %}" class="card" method="post" onsubmit="return validacion()">
-              {% csrf_token %}
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Seleccione el Área a Postular</label>
-                  <select name="noticia" required class="form-control" id="noticias">
-                    <option value="">Seleccione una Área.</option>
-                    <option value="1">Noticias VideoJuegos</option>
-                    <option value="2">Noticias Consolas</option>
-                    <option value="3">Publicidad en Área Gaming</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Ingrese sus Nombres:</label>
-                  <input type="text" name="nombres" required placeholder="Nombres" minlength="3" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Ingrese sus Apellidos:</label>
-                  <input type="text" name="apellidos" required placeholder="Apellidos" minlength="3" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Ingrese su Correo Electronico:</label>
-                  <input type="email" name="email" required placeholder="ejemplo@email.com" class="form-control" id="inputEmail4">
-                </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Ingrese su Número Telefónico:</label>
-                  <input type="number" name="telefono" required placeholder="123456789" minlength="9" class="form-control" id="fono">
-                </div>
-                <div class="form-group required">
-                  <label for="exampleFormControlSelect1">Indique su Nivel de Estudios:</label>
-                  <select name="opcion" required class="form-control" id="opciones">
-                    <option value="">Ingrese una Opción.</option>
-                    <option value="1">Secundaria Completa.</option>
-                    <option value="2">Técnico Profesional.</option>
-                    <option value="3">Titulo Universitario.</option>
-                    <option value="4">Ninguno.</option>
-                  </select>
-                </div>
-                <div class="form-group green-border-focus">
-                  <label for="formGroupExampleInput">Cuentanos porque quieres ser parte del Equipo: </label>
-                  <textarea cols="30" rows="9" name="texto" required minlength="20" class="form-control bloque"></textarea>
-                </div>
-                <button type="submit" class="btn btn-outline-danger btn-block">Enviar Formulario</button>
+            <div class="card-body">
+              <div class="form-group">
+                <form id="formulario" method="POST" class="post-form" enctype="multipart/form-data" onsubmit="return validacion()">
+                  {% csrf_token %}
+                  <div class="mt-3 h5">
+                    <h2 class="h5">{{ form.as_p }}</h2>
+                  </div>
+                  <button type="submit" style="margin-top: 8%; margin-bottom: 12%;" class="btn btn-outline-danger btn-block">Guardar</button>
+                  <br>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
           <div class="col-md-3">
             <div id="bootstrap" class="pt-4 pb-4 pr-4 pl-4">
@@ -142,9 +115,9 @@
       {
         $("#formulario").validate({
             rules: {
-                    nombres: "required",
-                    apellidos: "required",
-                    telefono: {
+                    nombre: "required",
+                    apellido: "required",
+                    numero: {
                       required: true,
                       digits: true
                     },

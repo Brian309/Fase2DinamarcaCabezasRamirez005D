@@ -4,19 +4,33 @@ import uuid
 
 # Create your models here.
 
+class NivelEducacional(models.Model):
+    nivel_educacional = models.CharField(max_length = 100, blank=True, null=True)
+    descripcion = models.TextField(max_length=500, blank=True, null=True)
+
+    class Meta:
+        ordering = ['nivel_educacional']
+    
+    def __str__(self):
+        return self.nivel_educacional
+
+    
+
+class AreaPostular(models.Model):
+    area_postular = models.CharField(max_length = 100,blank=True, null=True)
+    descripcion = models.TextField(max_length=500, blank=True, null=True)
+
+    class Meta:
+        ordering = ['area_postular']
+    
+    def __str__(self):
+        return self.area_postular
+
 class Autor(models.Model):
 
     id_autor = models.UUIDField(primary_key = True, default = uuid.uuid4, help_text = 'Indique el ID del Autor de noticia')
     nom_autor = models.CharField(max_length = 25, help_text='Indique el nombre del Autor')
-
-    NIVEL_EDUCACIONAL = (
-        ('UV', 'Universidad'),
-        ('TC', 'Tecnico Profesional'),
-        ('SC', 'Secundaria Completa'),
-        ('NA', 'Ninguno'),
-    )
-
-    educacion =  models.CharField(max_length = 2, choices = NIVEL_EDUCACIONAL, default = 'NA', help_text='Indique el nivel de estudios de Autor')
+    educacion =  models.ForeignKey('NivelEducacional', on_delete = models.SET_NULL, null= True, blank=True, help_text='Indique el nivel de estudios de Autor')
     numero = models.IntegerField(blank = True, null = True, help_text='Indique el número de contacto del Autor')
     correo = models.EmailField(max_length = 50, error_messages = {"Error": "Digite un formato válido!"}, help_text='Indique el correo del Autor')
 
@@ -58,34 +72,25 @@ class Consola(models.Model):
         
         return reverse('consola_detail', args=[str(self.id_consola)])
 
+    
 class Formulario(models.Model):
-
-    AREAS_POSTULACION = (
-        ('NV', 'Noticias Videojuegos'),
-        ('NC', 'Noticias Consolas'),
-        ('PG', 'Publicidad Gaming')
-    )
-
-    NIVEL_EDUCACIONAL = (
-        ('UV', 'Universidad'),
-        ('TC', 'Tecnico Profesional'),
-        ('SC', 'Secundaria Completa'),
-        ('NA', 'Ninguno'),
-    )
-
+    
     id_postulacion = models.UUIDField(primary_key = True, default = uuid.uuid4)
-    area_postular = models.CharField(max_length = 2, choices = AREAS_POSTULACION, default = 'NV', help_text='Indique el Areal a Postular')
-    nombre = models.TextField(max_length = 50, help_text='Indique el nombre del postulante')
-    apellido = models.TextField(max_length = 50, help_text='Indique los apellidos del postulante')
+    area_postular = models.ForeignKey('AreaPostular', on_delete=models.SET_NULL, null=True, blank=True, help_text='Indique el Areal a Postular') 
+    nombre = models.CharField(max_length = 50, help_text='Indique el nombre del postulante')
+    apellido = models.CharField(max_length = 50, help_text='Indique los apellidos del postulante')
     correo = models.EmailField(max_length = 50, error_messages = {"Error": "Digite un formato válido!"}, help_text='Indique el correo del postulante')
     numero = models.IntegerField(blank = True, null = True, help_text='Indique el número de contacto del postulante')
-    nivel_estudios = models.CharField(max_length = 2, choices = NIVEL_EDUCACIONAL, default = 'NA', help_text='Indique el nivel de estudios del postulante')
+    nivel_estudios = models.ForeignKey('NivelEducacional', on_delete=models.SET_NULL, null=True, blank=True, help_text='Indique el nivel de estudios del postulante')
     motivo = models.TextField(max_length = 500, help_text='Motivo por el cual quiere ser parte del equipo')
+
+    class Meta:
+        ordering = ['id_postulacion']
 
     def __str__(self):
 
-        return str(self)
+        return self.nombre
 
     def get_absolute_url(self):
         
-        return reverse('formulario_detail', args=[str(self.id_postulacion)])
+        return reverse('gracias_detail', args=[str(self.id_postulacion)])
